@@ -12,20 +12,20 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "My porfolio blog"
+locale                   : "ko"
+title                    : "study hard, work harder"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "DAVID S. KIM"
-description              : "Happy Learning. 개발자 포트폴리오 및 공부 블로그"
-url                      : https://thinkreen.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : "HYEOKKU KIM"
+description              : "MS student at UOS"
+url                      : https://hyeokkukim.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : /assets/images/logo.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : #/assets/images/logo.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
@@ -72,10 +72,10 @@ naver_site_verification  :
 twitter:
   username               :
 facebook:
-  username               : thinkreendavid
-  app_id                 : 314948646216110
+  username               : #HYEOKKU KIM
+  app_id                 : #314948646216110
   publisher              :
-og_image                 : /assets/images/site-logo.png # Open Graph/Twitter default site image
+og_image                 : #/assets/images/site-logo.png # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -85,37 +85,37 @@ social:
 
 # Analytics
 analytics:
-  provider               : "google-universal" # false (default), "google", "google-universal", "custom"
+  provider               : #"google-universal" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : "UA-83121202-1"
-    anonymize_ip         : false # true, false (default)
+    tracking_id          : #"UA-83121202-1"
+    anonymize_ip         : #false # true, false (default)
 
 
 # Site Author
 sidebar:
     - title: "Title"
 author:
-  name             : "DAVID S. KIM"
-  avatar           : /assets/images/bio-photo.png # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Happy Learning! 개발자 포트폴리오 및 공부 블로그입니다."
-  location         : "Austin, TX"
+  name             : "HYEOKKU KIM"
+  avatar           : /assets/images/my.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "MS student at UOS"
+  location         : "Seoul, KOR"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:thinkreen@gmail.com"
+      url: "mailto:hyksun2015@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/thinkreen"
+      url: "https://github.com/hyeokkukim"
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/thinkreen"
+      url: "https://www.linkedin.com/in/chacehkk"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/thinkreendavid/"
+      url: #"https://www.facebook.com/thinkreendavid/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
@@ -279,28 +279,24 @@ defaults:
     values:
       layout: single
       author_profile: true
+      read_time: true
       comments: true
       share: true
       related: true
-      toc: true
-      toc_ads: true # 구글 애드센스 추가
-      toc_sticky: true #스크롤 내릴 때 가티 내려가는 목차
-  # _pages 
+      toc_ads: true
+      toc_sticky: true
+      sidebar:
+        title: 카테고리
+        nav: "sidebar-contents"
   - scope:
       path: "_pages"
       type: pages
     values:
-      layout: single
-      author_profile: true
-      toc: true
-      toc_ads: true # 구글 애드센스 추가
-      toc_sticky: true #스크롤 내릴 때 가티 내려가는 목차
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      comments: true
-      share: true
+      sidebar:
+        title: 카테고리
+        nav: "sidebar-contents"
+sidebar:
+  - title: "Title"
+    text: "Some text here."
+  - title: "Another Title"
+    text: "More text here."
