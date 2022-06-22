@@ -21,7 +21,7 @@ title_separator          : "-"
 subtitle                 : # 즐거운 소프트웨어 놀이터 site tagline that appears below site title in masthead
 name                     : "Yonggeun Shin"
 description              : "I am yganalyst"
-url                      : "https://yganalyst.github.io"
+url                      : "https://hyeokkukim.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "yganalyst/yganalyst.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # "/assets/images/my.jpg"
