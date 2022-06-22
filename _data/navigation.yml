@@ -2,8 +2,7 @@
 main:
   - title: "About"
     url: /_pages/about/
-  - title: "Posts"
+  - title: "카테고리"
     url: /categories/
-  - title: "Portfolio"
-    url: /portfolio/
+
  

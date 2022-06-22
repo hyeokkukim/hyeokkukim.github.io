@@ -7,17 +7,19 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 html {
-    font-size: 16px; // change to whatever
+    font-size: 12px; // change to whatever
     @include breakpoint($medium) {
-      font-size: 18px; // change to whatever
+      font-size: 14px; // change to whatever
     }
   
     @include breakpoint($large) {
-      font-size: 18px; // change to whatever
+      font-size: 14px; // change to whatever
     }
   
     @include breakpoint($x-large) {
-      font-size: 18px; // change to whatever
+      font-size: 14px; // change to whatever
     }
 }
