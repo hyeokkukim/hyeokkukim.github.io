@@ -2,7 +2,35 @@
 main:
   - title: "About"
     url: /_pages/about/
+  - title: "Project"
+    url: /_pages/project/
   - title: "카테고리"
     url: /categories/
 
- 
+sidebar-contents:
+  - title: "Study"
+    children:
+      - title: "Machine Learning"
+        url: /categories/#ML
+      - title: "Econometrics"
+        url: /categories/#Econ
+      - title: "ML for Finance"
+        url: /categories/#Quant
+      - title: "Python"
+        url: /categories/#Python
+  
+  - title: "Research"
+    children:
+      - title: "Spatial"
+        url: /categories/#MW
+      - title: "Causal Inference"
+        url: /categories/#CI
+      - title: "Crypto Currency"
+        url: /categories/#Crypto
+  
+  - title: "Project"
+    children:
+      - title: "project"
+        url: /categories/#main-project
+      - title: "toy-project"
+        url: /categories/#toy-project
