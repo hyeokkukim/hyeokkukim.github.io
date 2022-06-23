@@ -206,7 +206,7 @@ Hausman statistic은 Wald statistic과 동일하게 된다.
 몬테카를로 시뮬레이션은 다소 심플하다.
 
 1. 연구자가 관측치에 대한 특정 $F$ 분포와 추정할 모수를 선택한다.
-2. 그리고, n개의 random pairs $(y_i^*,x_i^{*'})$ 를 분포 F로부터 random하게 generating한다.
+2. 그리고, n개의 random pairs ( $y_i^*,x_i^{*'}$ ) 를 분포 F로부터 random하게 generating한다.
 3. 추정하고자 하는 통계량 $T_n$ 을 계산한다.
 4. 2~3번을 $B$ 번 만큼 반복해 총 $B$ 개의 통계량 $T_{nb},b=1,\cdots,B$ 를 산출한다.
 5. random sample of size $B$ 의 distribution $G_n(u,F)$ 에 대해 $\hat{P}=\frac{1}{B}\Sigma_{b=1}^{B}1(T_{nb}\geq u)$ 값을 계산한다.
