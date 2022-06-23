@@ -70,7 +70,7 @@ $$
 
 asymptotic estimator와는 다르게 bootstrapdms non-consistency를 전제하기 때문에 bias가 존재한다. $\hat{\theta}$의 bias를 $\tau_n=E(\hat{\theta}-\theta_0)$라고 하면, $T_n(\theta)=\hat{\theta}-\theta$의 bias는 $\tau_n=E(T_n(\theta_0))$ 가 된다.
 
-이때 bootstrap을 통해 bias를 조정이 가능한데 bootstrap sample $$\hat{\theta}^*=\hat{\theta}((y_1^*,x_1^*),\cdots{} ,(y_n^*,x_n^*))$ 와 $T_n^*=\hat{\theta}^*-\theta_n=\hat{\theta}^*-\hat{\theta}$ 에 대하여 bootstrap estimate의 bias $\tau_n=E(T^*_n)$$ 이 된다.
+이때 bootstrap을 통해 bias를 조정이 가능한데 bootstrap sample $$\hat{\theta}^*=\hat{\theta}((y_1^*,x_1^*),\cdots{} ,(y_n^*,x_n^*))$$ 와 $$T_n^*=\hat{\theta}^*-\theta_n=\hat{\theta}^*-\hat{\theta}$ 에 대하여 bootstrap estimate의 bias $\tau_n=E(T^*_n)$$ 이 된다.
 
 그리고 bias의 추정값은 $$\hat{\tau}_n^*=\frac{1}{B}\Sigma_{b=1}^B T_{nb}^*=\frac{1}{B}\Sigma_{b=1}^B\hat{\theta}^*-\hat{\theta}=\bar{\hat{\theta}^*}-\hat{\theta}$$  
 
@@ -93,25 +93,25 @@ bootstrap의 standard error는 $$s^*(\hat{\theta})=\sqrt{\hat{V}_n^*}$$ 가 된�
 
 ---
 
-### 5. Percentile Interval
+### 5-1. Percentile Interval
 
 bootstrap에서의 confidence interval은 bootstrap을 통해 나온 통계량의 quantile function으로 구한다.
 
-$q^*_n(\alpha)=q_n(\alpha,F_n)$ 일때, $q^*_n(\alpha)$ 은 bootstrap의 quantile 값이 된다.
+$$q^*_n(\alpha)=q_n(\alpha,F_n)$$ 일때, $$q^*_n(\alpha)$$ 은 bootstrap의 quantile 값이 된다.
 
-$T_n=\hat{\theta}$ 가 추정하고자 하는 통계량이고, $(1-\alpha)100%$% $ 신뢰구간으로 추정할때 percentile interval은
+$T_n=\hat{\theta}$ 가 추정하고자 하는 통계량이고, $(1-\alpha)100%$%$ 신뢰구간으로 추정할때 percentile interval은
 
-$C^{PC}=[q_n^*(\alpha/2),q^*_n(1-\alpha/2)$ 이다.
+$$C^{PC}=[q_n^*(\alpha/2),q^*_n(1-\alpha/2)$$ 이다.
 
-이때 $q^*_n(\alpha)$는 부트스트랩 결과 나온 통계량 $\hat{\theta_{n1}^*}, \cdots{} ,\hat{\theta}_{nB}^*$ 그리고 최종적으로 percentile interval의 추정값은 $C^{PC}=[\hat{q_n}^*(\alpha/2),\hat{q_n}^*(1-\alpha/2)]$ 이 된다.
+이때 $$q^*_n(\alpha)$$ 는 부트스트랩 결과 나온 통계량 $$\hat{\theta_{n1}^*}, \cdots{} ,\hat{\theta}_{nB}^*$$ 그리고 최종적으로 percentile interval의 추정값은 $$C^{PC}=[\hat{q_n}^*(\alpha/2),\hat{q_n}^*(1-\alpha/2)]$$ 이 된다.
 
-Percentile-t Interval
+### 5-2. Percentile-t Interval
 
-classic sampling t 통계량이 $T=\frac{\hat{\theta}-\theta}{s(\hat{\theta})}$일때, bootstrap의 t 통계량은 $T^*=\frac{\hat{\theta}^*-\hat{\theta}}{s^*(\hat{\theta})}$가 된다.
+classic sampling t 통계량이 $T=\frac{\hat{\theta}-\theta}{s(\hat{\theta})}$ 일때, bootstrap의 t 통계량은 $$T^*=\frac{\hat{\theta}^*-\hat{\theta}}{s^*(\hat{\theta})}$$ 가 된다.
 
-이때, 부트스트랩 통계량 $T^*$는 percentile interval 안에 들어와야 하므로 $q^*_{\alpha/2}\leq T^*\leq q^*_{1-\alpha/2}$로써 $q^*_{\alpha/2}\leq \frac{\hat{\theta}^*-\hat{\theta}}{s^*(\hat{\theta})}\leq q^*_{1-\alpha/2}$가 된다.
+이때, 부트스트랩 통계량 $T^*$ 는 percentile interval 안에 들어와야 하므로 $$q^*_{\alpha/2}\leq T^*\leq q^*_{1-\alpha/2}$$ 로써 $$q^*_{\alpha/2}\leq \frac{\hat{\theta}^*-\hat{\theta}}{s^*(\hat{\theta})}\leq q^*_{1-\alpha/2}$$ 가 된다.
 
-그러므로 percentile-t inverval은 $C^{pt}=[\hat{\theta}-s(\hat{\theta})q^*_{1-\alpha/2},\hat{\theta}-s(\hat{\theta})q^*_{\alpha/2}]$가 된다.
+그러므로 percentile-t inverval은 $$C^{pt}=[\hat{\theta}-s(\hat{\theta})q^*_{1-\alpha/2},\hat{\theta}-s(\hat{\theta})q^*_{\alpha/2}]$$ 가 된다.
 
 percentile-t interval은 다음 증명에 따라 asymptotically valid하다.
 
@@ -128,13 +128,13 @@ $$
 
 ### 6. Bootstrap Hypothesis Tests
 
-Bootstrap 추정치의 p-value는 $p^*=\frac{1}{B}\Sigma_{b=1}^B1[|T^*(b)|>|T|]$가 된다.
+Bootstrap 추정치의 p-value는 $$ p^* =\frac{1}{B}\Sigma_{b=1}^B1[\mid T^*(b)\mid > \mid T \mid ]$$ 가 된다.
 
-하지만 bootstrap에서의 standard error는 구하기 힘드므로 non-studentized statistic $T=\hat{\theta}-\theta_0$를 이용하면 bootstrap의 non-studentized statistic은 $T^*=\hat{\theta}^*-\hat{\theta}$가 된다.
+하지만 bootstrap에서의 standard error는 구하기 힘드므로 non-studentized statistic $T=\hat{\theta}-\theta_0$를 이용하면 bootstrap의 non-studentized statistic은 $$T^*=\hat{\theta}^*-\hat{\theta}$$ 가 된다.
 
 그리고 $100\alpha$%의 신뢰구간에서 $H_0: \theta=\theta_0$를 검증할때 bootstrap의 p-value는
 
-$p^*=\frac{1}{B}\Sigma_{b=1}^B1[|\hat{\theta}^*(b)-\hat{\theta}|>|\hat{\theta}-\theta_0|]$가 된다.
+$$p^*=\frac{1}{B}\Sigma_{b=1}^B1[\mid \hat{\theta}^*(b)-\hat{\theta}\mid > \mid \hat{\theta}-\theta_0\mid ]$$ 가 된다.
 
 ---
 
@@ -144,9 +144,9 @@ $p^*=\frac{1}{B}\Sigma_{b=1}^B1[|\hat{\theta}^*(b)-\hat{\theta}|>|\hat{\theta}-\
 
 $H_0:\theta=\theta_0,H_1:\theta\ne\theta_0$에 대해 bootstrap wald 통계량은
 
-$W^*=(\hat{\theta}^*-\hat{\theta})'(\hat{V}_{\hat{\theta}})^{-1}(\hat{\theta}^*-\hat{\theta})$가 된다.
+$$W^*=(\hat{\theta}^*-\hat{\theta})'(\hat{V}_{\hat{\theta}})^{-1}(\hat{\theta}^*-\hat{\theta})$$ 가 된다.
 
-그리고 기각역 $W>q^*_{1-\alpha}$에 대해 p-value는 $p^*=\frac{1}{B}\Sigma_{b=1}^B1[W^*(b)>W]$이 된다.
+그리고 기각역 $$W>q^*_{1-\alpha}$$ 에 대해 p-value는 $$p^*=\frac{1}{B}\Sigma_{b=1}^B1[W^*(b)>W]$$ 이 된다.
 
 하지만, $\hat{V}_{\hat{\theta}}$를 구하기 힘드므로 identity matrix를 사용하기도 한다.
 
@@ -158,9 +158,9 @@ criterion-based estimator는 $\hat{\beta}=arg min_\beta J(\beta)$와 같은 제�
 
 가설검증 criterion based statistic은 $J=min_{r(\beta)=\theta_0}J(\beta)-min_\beta J(\beta)=J(\tilde{\beta})-J(\hat{\beta})$이 되고 부트스트랩에서 제약식이 있는 경우 모수의 추정값은 
 
-$\tilde{\beta}^*=arg min_{r(\beta)=\hat{\theta}} J^*(\beta)$이 된다. (단, $\hat{\theta}=r(\hat{\beta})$)
+$$\tilde{\beta}^*=arg min_{r(\beta)=\hat{\theta}} J^*(\beta)$$ 이 된다. (단, $$\hat{\theta}=r(\hat{\beta})$$ )
 
-그리고 이때의 bootstrap J statistic은 $J^*=min_{r(\beta)=\hat{\theta}}J^*(\beta)-min_\beta J^*(\beta)=J^*(\tilde{\beta}^*)-J^*(\hat{\beta}^*)$이고, p-vlaue는 $p^*=\frac{1}{B}\Sigma_{b=1}^B1[J^*(b)>J]$가 된다.
+그리고 이때의 bootstrap J statistic은 $$J^*=min_{r(\beta)=\hat{\theta}}J^*(\beta)-min_\beta J^*(\beta)=J^*(\tilde{\beta}^*)-J^*(\hat{\beta}^*)$$ 이고, p-vlaue는 $$p^*=\frac{1}{B}\Sigma_{b=1}^B1[J^*(b)>J]$$ 가 된다.
 
 ---
 
@@ -217,23 +217,23 @@ $G_n^*(u)=G_n(u,F_n)=\Phi(u)-\frac{1}{n^{1/2}}g_1(u,F_n)+O(n^{-1})$ 과 같고,
 
 $G_n^*(u)-G_n(u,F_n)=\frac{1}{n^{1/2}}(g_1(u,F_n)-g_1(u,F_0))+O(n^{-1})$ 이 된다.
 
-그리고 $g_1(u,F_n)-g_1(u,F_0) \approx \frac{\partial}{\partial F}g_1(u,F_0)(F_n-F_0)=O(n^{-1/2})$ 이 되므로 부트스트랩과 모집단의 오차 또한 $G_n^*(u)-G_n(u,F_0)=O(n^{-1})$ 또는 $Pr(T^*_n \leq u)=Pr(T_n \leq u) + O(n^{-1})$ 이 된다.
+그리고 $g_1(u,F_n)-g_1(u,F_0) \approx \frac{\partial}{\partial F}g_1(u,F_0)(F_n-F_0)=O(n^{-1/2})$ 이 되므로 부트스트랩과 모집단의 오차 또한 $$G_n^*(u)-G_n(u,F_0)=O(n^{-1})$$ 또는 $$Pr(T^*_n \leq u)=Pr(T_n \leq u) + O(n^{-1})$$ 이 된다.
 
 ---
 
 ### 10. Bootstrap for Regression Models
 
-선형회귀식 $y_i = x_i'\beta + e_i$ 에 대해 non-parametric bootstrap 샘플로 만들어진 선형회귀식 $y_i^* = x_i^{*'}\hat{\beta}+e^*_i$ 는 보통 $E(e_i^*\mid x_i^*) \ne 0$ 을 만족하지 못한다.
+선형회귀식 $y_i = x_i'\beta + e_i$ 에 대해 non-parametric bootstrap 샘플로 만들어진 선형회귀식 $$y_i^* = x_i^{*'}\hat{\beta}+e^*_i$$ 는 보통 $$E(e_i^*\mid x_i^*) \ne 0$$ 을 만족하지 못한다.
 
-그렇기 때문에 해당 조건을 만족시키기 위해 $x_i^*$을 고정시키고 i.i.d.하게 $e^*_i$를 난수시킨다.
+그렇기 때문에 해당 조건을 만족시키기 위해 $x_i^*$$ 을 고정시키고 i.i.d.하게 $$e^*_i$$ 를 난수시킨다.
 
-즉, $x_i^*=x_i$ 로 고정하고 오차 $e^*_i$ 는 OLS의 오차 $\left{ \hat{e}_1,\cdots{},\hat{e}_n \right}$ 으로부터 정규분포 $N(0,\hat{\sigma}^2)$ 로 resampling 된 것이다. 하지만 해당 작업이 매우 어렵기 때문에 아래와 같은 조건하에서 $e^*_i$ 를 추출하는게 일반적이다.
+즉, $$x_i^*=x_i$$ 로 고정하고 오차 $$e^*_i$$ 는 OLS의 오차 $${ \hat{e}_1,\cdots{},\hat{e}_n }$$ 으로부터 정규분포 $$N(0,\hat{\sigma}^2)$$ 로 resampling 된 것이다. 하지만 해당 작업이 매우 어렵기 때문에 아래와 같은 조건하에서 $$e^*_i$$ 를 추출하는게 일반적이다.
 
-$E(e_i^*|x_i)=0$
+$E(e_i^*\mid x_i)=0$
 
-$E(e_i^{*2}|x_i)=\hat{e}_i^2$
+$E(e_i^{*2}\mid x_i)=\hat{e}_i^2$
 
-$E(e_i^{*3}|x_i)=\hat{e}_i^3$ 
+$E(e_i^{*3}\mid x_i)=\hat{e}_i^3$ 
 
 그리고 보통 $e_i^*$ 는 두가지 확률분포로부터 추출되어진다.
 
