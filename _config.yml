@@ -96,7 +96,7 @@ sidebar:
     - title: "Title"
 author:
   name             : "HYEOKKU KIM"
-  avatar           : #"/assets/images/my.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "MS student at UOS"
   location         : "Seoul, KOR"
   email            :

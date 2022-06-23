@@ -11,24 +11,24 @@ sidebar-contents:
   - title: "Study"
     children:
       - title: "Machine Learning"
-        url: /categories/Machine Learning
+        url: /categories/#ML
       - title: "Econometrics"
-        url: /categories/Econometrics
+        url: /categories/#Econometrics
       - title: "ML for Finance"
-        url: /categories/Quant
+        url: /categories/#Quant
       - title: "Python"
-        url: /categories/Python
+        url: /categories/#Python
   - title: "Research"
     children:
       - title: "Spatial"
-        url: /categories/Spatial
+        url: /categories/#Spatial
       - title: "Causal Inference"
-        url: /categories/Causal Inference
+        url: /categories/#Causal
       - title: "Crypto Currency"
-        url: /categories/Crypto Ceurrency
+        url: /categories/#Crypto
   - title: "Project"
     children:
       - title: "project"
-        url: /categories/Project
+        url: /categories/#Project
       - title: "toy-project"
-        url: /categories/toy-project
+        url: /categories/#toy-project
