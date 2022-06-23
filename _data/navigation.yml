@@ -18,7 +18,6 @@ sidebar-contents:
         url: /categories/#Quant
       - title: "Python"
         url: /categories/#Python
-  
   - title: "Research"
     children:
       - title: "Spatial"
@@ -27,7 +26,6 @@ sidebar-contents:
         url: /categories/#CI
       - title: "Crypto Currency"
         url: /categories/#Crypto
-  
   - title: "Project"
     children:
       - title: "project"
