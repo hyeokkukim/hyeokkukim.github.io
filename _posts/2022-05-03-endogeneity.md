@@ -121,5 +121,6 @@ y_1 &= x_{1i}\beta_{1i}+x_{2i}\beta_{2i}+e_i\\
 &=x_{1i}\beta_{1i}+z_{1i}\alpha_{1i}+z_{2i}\alpha_{2i}+u_i+e_i\\
 
 &=x_{1i}\beta_{1i}+x_{1i}\alpha_{1i}+z_{2i}\alpha_{2i}+u_i+e_i\\
+\end{aligned}
 
 결과적으로 우리는 내생성을 제거할 수 있게되는 것이다.
