@@ -1,16 +1,30 @@
-# Ch7. Endogeneity
+---
+title:  "[Econ] Endogeneity"
+excerpt: "변수속 또다른 변수 - 내생성"
+toc: true
+toc_sticky: true
 
-Endogeneity
+categories:
+  - Econometrics
+
+use_math: true
+
+---
+
+
+### 1. Endogeneity
 
 Endogeneity(내생성)은 독립변수가 오차항과 상관관계를 가지는 것이다.
 
-예를들어 $y_1 = x_1'\beta_1 + e$라는 선형회귀 식이 있다고 하자. 이때 $E(x_1e)\ne0$이라면 확률변수 $x_1$과 오차항사이에 공분산이 존재한다는 것이다. 즉, 종속변수 $y_1$에 영향을 주는 우리가 관찰하지 못한 또 다른 확률변수가 존재한다는 것이다. 이때 확률변수 $x_1$이 endogeneity가 있다고 한다.
+예를들어 $y_1 = x_1' \beta_1 + e$ 라는 선형회귀 식이 있다고 하자. 이때 $E(x_1 e) \ne 0$ 이라면 확률변수 $x_1$ 과 오차항사이에 공분산이 존재한다는 것이다. 즉, 종속변수 $y_1$ 에 영향을 주는 우리가 관찰하지 못한 또 다른 확률변수가 존재한다는 것이다. 이때 확률변수 $x_1$ 이 endogeneity가 있다고 한다.
 
-Simultaneous Equations Models
+---
 
-내생성 문제에서 가장 많이 사용되는 Simultaneous Equations Models(SEM)은 수요와 공급 관련 문제이다. $h_s$는 노동자들의 연단위 노동시간이고, $w$는 시간당 평균 월급이다. 그리고 이 두 변수는 아래와 같이 간단하게 나타날 수 있다.
+### 2. Simultaneous Equations Models
 
-Supply equation: $h_s = \beta_0 + \beta_1w +v$
+내생성 문제에서 가장 많이 사용되는 Simultaneous Equations Models(SEM)은 수요와 공급 관련 문제이다. $h_s$ 는 노동자들의 연단위 노동시간이고, $w$ 는 시간당 평균 월급이다. 그리고 이 두 변수는 아래와 같이 간단하게 나타날 수 있다.
+
+- Supply equation: $h_s = \beta_0 + \beta_1w +v$
 
 (오차항 $v$는 노동공급에 영향일 끼칠 수 있는 기계설비 비용 등이 포함된다.)
 

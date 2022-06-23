@@ -30,8 +30,8 @@ Definition of the Bootstrap
 
 부트스트랩 과정은 다음과 같다.
 
-1. 분포 $F_n$으로부터 $\left( y_i^*,x_i^* \right) $ 을 샘플링 한다.
-2. 1에서 샘플링한 부트스트랩 샘플들로 부터 구하고자 하는 통계량 $T_n^* = T_n((y_1^*,x_1^*),\cdots{},(y_n^*,x_n^*),F_n)$ 을 구한다.
+1. 분포 $F_n$ 으로부터 $$( y_i^*,x_i^* )$$ 을 샘플링 한다.
+2. 1에서 샘플링한 부트스트랩 샘플들로 부터 구하고자 하는 통계량 $$T_n^* = T_n((y_1^*,x_1^*),\cdots{},(y_n^*,x_n^*),F_n)$$ 을 구한다.
 
 nonparametric bootstrap: The Empirical Distribution Function
 
@@ -60,7 +60,7 @@ $$
 1. $F_n$으로부터 $1/n$의 확률로 random vector ( $y_i^*,x_i^*$ ) n개를 추출한다.
 2. 추출된 bootstrap sample로부터 부트스트랩 통계량 $T_n^*$을 계산한다.
 3. 1,2번을 B번 반복한다.
-4. 각각 추출된 $T_{nb}^*,b=1,\cdots{},B$ 로부터 $T^*_n < u$ 에 해당하는 empirical probability를 계산한다.
+4. 각각 추출된 $$T_{nb}^*,b=1,\cdots{},B$$ 로부터 $$T^*_n < u$$ 에 해당하는 empirical probability를 계산한다.
 
 모집단의 분포를 아는 경우 parametric이라고 한다. 이때의 Bootstrap procedure는  $F(\hat{\theta}_n)\rightarrow F(\theta)$ 를 만족하는 $\theta$ 에 대해 bootstrap에 $F_n$ 대신 $F(\hat{\theta}_n)$ 을 사용하면 parametric bootstrap이 된다. 복원추출 샘플링을 했던 EDF경우와 달리 이 경우에는 동일한 샘플사이즈 $n$을 추출하게 된다.
 
@@ -70,14 +70,14 @@ $$
 
 asymptotic estimator와는 다르게 bootstrapdms non-consistency를 전제하기 때문에 bias가 존재한다. $\hat{\theta}$의 bias를 $\tau_n=E(\hat{\theta}-\theta_0)$라고 하면, $T_n(\theta)=\hat{\theta}-\theta$의 bias는 $\tau_n=E(T_n(\theta_0))$ 가 된다.
 
-이때 bootstrap을 통해 bias를 조정이 가능한데 bootstrap sample $\hat{\theta}^*=\hat{\theta}((y_1^*,x_1^*),\cdots{} ,(y_n^*,x_n^*))$ 와 $T_n^*=\hat{\theta}^*-\theta_n=\hat{\theta}^*-\hat{\theta}$ 에 대하여 bootstrap estimate의 bias $\tau_n=E(T^*_n)$ 이 된다.
+이때 bootstrap을 통해 bias를 조정이 가능한데 bootstrap sample $$\hat{\theta}^*=\hat{\theta}((y_1^*,x_1^*),\cdots{} ,(y_n^*,x_n^*))$ 와 $T_n^*=\hat{\theta}^*-\theta_n=\hat{\theta}^*-\hat{\theta}$ 에 대하여 bootstrap estimate의 bias $\tau_n=E(T^*_n)$$ 이 된다.
 
-그리고 bias의 추정값은 $\hat{\tau}_n^*=\frac{1}{B}\Sigma_{b=1}^B T_{nb}^*=\frac{1}{B}\Sigma_{b=1}^B\hat{\theta}^*-\hat{\theta}=\bar{\hat{\theta}^*}-\hat{\theta}$  
+그리고 bias의 추정값은 $$\hat{\tau}_n^*=\frac{1}{B}\Sigma_{b=1}^B T_{nb}^*=\frac{1}{B}\Sigma_{b=1}^B\hat{\theta}^*-\hat{\theta}=\bar{\hat{\theta}^*}-\hat{\theta}$$  
 
 만약 $\hat{\theta}$ 에 bias가 존자하다면 bias를 조정해야 하고, 조정된 bias를 bias-correceted estimator라 한다.
 
-1. $\hat{\theta}<\theta_0$ 라면 $\bar{\hat{\theta}^*}<\hat{\theta}$ 이므로 bias-corrected estimator는 $\tilde{\theta}^*=\hat{\theta}-\hat{\tau}_n^*=\hat{\theta}-(-(\bar{\hat{\theta}^*}-\hat{\theta}))=\hat{\theta}+(\bar{\hat{\theta}^*}-\hat{\theta})=2\hat{\theta}-\bar{\hat{\theta}^*}$ 이 된다.
-2. $\hat{\theta} > \theta_0$라면 $\bar{\hat{\theta}^*}> \hat{\theta}$ 이므로 bias-corrected estimator는 $\tilde{\theta}^*=\hat{\theta}-\hat{\tau}_n^*=\hat{\theta}-(\bar{\hat{\theta}^*}-\hat{\theta})=2\hat{\theta}-\bar{\hat{\theta}^*}$ 이 된다.
+1. $\hat{\theta}<\theta_0$ 라면 $$\bar{\hat{\theta}^*}<\hat{\theta}$$ 이므로 bias-corrected estimator는 $$\tilde{\theta}^*=\hat{\theta}-\hat{\tau}_n^*=\hat{\theta}-(-(\bar{\hat{\theta}^*}-\hat{\theta}))=\hat{\theta}+(\bar{\hat{\theta}^*}-\hat{\theta})=2\hat{\theta}-\bar{\hat{\theta}^*}$$ 이 된다.
+2. $\hat{\theta} > \theta_0$ 라면 $$\bar{\hat{\theta}^*}> \hat{\theta}$$ 이므로 bias-corrected estimator는 $$\tilde{\theta}^*=\hat{\theta}-\hat{\tau}_n^*=\hat{\theta}-(\bar{\hat{\theta}^*}-\hat{\theta})=2\hat{\theta}-\bar{\hat{\theta}^*}$$ 이 된다.
 
 ---
 
@@ -85,11 +85,11 @@ asymptotic estimator와는 다르게 bootstrapdms non-consistency를 전제하�
 
 $T_n=\hat{\theta}$ 일때 $Var(\hat{\theta})=V_n=E(T_n-E(T_n))^2$ 이고,
 
-$T_n^*=\hat{\theta}^*$ 일때 $Var(\hat{\theta}^*)=V_n^*=E(T_n^*-E(T_n^*))^2$ 이 된다.
+$$T_n^*=\hat{\theta}^* $$ 일때 $$Var(\hat{\theta}^*)=V_n^*=E(T_n^*-E(T_n^*))^2$$ 이 된다.
 
-이때 variance의 추정값은 $\hat{V}_n^*=\frac{1}{B}\Sigma_{b=1}^B(\hat{\theta}_b^*-\bar{\hat{\theta}^*})^2$ , 
+이때 variance의 추정값은 $$\hat{V}_n^*=\frac{1}{B}\Sigma_{b=1}^B(\hat{\theta}_b^* -\bar{\hat{\theta}^*})^2$$ , 
 
-bootstrap의 standard error는 $s^*(\hat{\theta})=\sqrt{\hat{V}_n^*}$ 가 된다.
+bootstrap의 standard error는 $$s^*(\hat{\theta})=\sqrt{\hat{V}_n^*}$$ 가 된다.
 
 ---
 
