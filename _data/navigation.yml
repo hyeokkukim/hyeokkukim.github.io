@@ -1,9 +1,9 @@
 # main links links
 main:
   - title: "About"
-    url: /_pages/about/
+    url: /about/
   - title: "Project"
-    url: /_pages/project/
+    url: /categories/project/
   - title: "카테고리"
     url: /categories/
 
@@ -11,24 +11,24 @@ sidebar-contents:
   - title: "Study"
     children:
       - title: "Machine Learning"
-        url: /categories/#ML
+        url: /categories/Machine Learning
       - title: "Econometrics"
-        url: /categories/#Econ
+        url: /categories/Econometrics
       - title: "ML for Finance"
-        url: /categories/#Quant
+        url: /categories/Quant
       - title: "Python"
-        url: /categories/#Python
+        url: /categories/Python
   - title: "Research"
     children:
       - title: "Spatial"
-        url: /categories/#MW
+        url: /categories/Spatial
       - title: "Causal Inference"
-        url: /categories/#CI
+        url: /categories/Causal Inference
       - title: "Crypto Currency"
-        url: /categories/#Crypto
+        url: /categories/Crypto Ceurrency
   - title: "Project"
     children:
       - title: "project"
-        url: /categories/#main-project
+        url: /categories/Project
       - title: "toy-project"
-        url: /categories/#toy-project
+        url: /categories/toy-project

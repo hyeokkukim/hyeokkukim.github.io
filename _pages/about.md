@@ -4,7 +4,6 @@ title: "Hyeokku Kim"
 layout: single
 ---
 
----
 
 ## Work Experiences
 ### Heungkuk Asset Management(2020 ~ 2021) - Fixed Income Analyst 
