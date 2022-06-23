@@ -128,10 +128,10 @@ footer:
       # url:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/thinkreendavid/"
+      #url: "https://www.facebook.com/thinkreendavid/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/thinkreen"
+      #url: "https://github.com/thinkreen"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url: 
