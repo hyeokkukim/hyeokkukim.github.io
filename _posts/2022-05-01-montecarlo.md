@@ -151,7 +151,7 @@ $H_0: h(\beta)=\theta_0, H_1:h(\beta)\ne \theta_0$
 
 $$\sqrt{n} (\hat{\beta}-\tilde{\beta}_{emd})\rightarrow_dN(0,V_\beta R(R'V_\beta R)^{-1}R'V_\beta$$
 
-그리고 이에 따른 Hausman 통계량은
+그리고 이에 따른 Hausman 통계량은 다음과 같고,
 
 $$
 \begin{aligned}
@@ -161,7 +161,7 @@ H &= (\hat{\beta}-\tilde{\beta}_{emd})'avar(\hat{\hat{\beta}-\tilde{\beta}_{emd}
 \end{aligned}
 $$
 
-이때, 행렬 $\hat{V}_\beta^{1/2}\hat{R}(\hat{R}'\hat{V}_\beta\hat{R})^{-1}\hat{R}'\hat{V}^{1/2}_\beta$ 는 idempotent 하므로 이 matrix의 generalized inverse(and Moore-Penrose inverse)는 자기 자신이 된다.
+$\hat{V}_\beta^{1/2}\hat{R}(\hat{R}'\hat{V}_\beta\hat{R})^{-1}\hat{R}'\hat{V}^{1/2}_\beta$ 는 idempotent 하므로 이 matrix의 generalized inverse(and Moore-Penrose inverse)는 자기 자신이 된다.
 
 $$
 \begin{aligned}
@@ -173,7 +173,7 @@ $$
 \end{aligned}
 $$
 
-그러므로 Hausman statistic은 $H=n(\hat{\beta}-\tilde{\beta}_{emd})'\hat{R}(\hat{R}'\hat{V}_\beta\hat{R})^{-1}\hat{R}'(\hat{\beta}-\tilde{\beta}_{emd})\rightarrow_d\mathcal{X}^2_q$ 가 된다.
+그러므로 Hausman statistic은 $$H=n(\hat{\beta}-\tilde{\beta}_{emd})'\hat{R}(\hat{R}'\hat{V}_\beta\hat{R})^{-1}\hat{R}'(\hat{\beta}-\tilde{\beta}_{emd})\rightarrow_d\mathcal{X}^2_q$$ 가 된다.
 
 만약, 제약조건이 $\hat{R}=R,R'\tilde{\beta}_{emd}=\theta_0$ 를 만족하는 선형 제약조건이라면
 
@@ -199,14 +199,14 @@ Hausman statistic은 Wald statistic과 동일하게 된다.
 
 모집단 F의 관측치 $(y_i;x_i')$, 모수 $\theta$에 대해 estimator $\hat{\theta}$, t-statistic $(\hat{\theta}-\theta)/se(\hat{\theta})$ 와 같은 통계량의 집합을  $T_n=T_n{(y_i,x_1'),\cdots{},(y_n,x'_n),\theta}$ 이라고 하자.
 
-이때, $T_n$ 의 누적분포 함수는 $G_n(u,F)=P(T_n\leq u$|$F)$ 라고 할때, $T_n$ 의 asymptotic distribution은 보통 알지만, $G_n$ 의 분포는 보통 알지 못한다.
+이때, $T_n$ 의 누적분포 함수는 $G_n(u,F)=P(T_n\leq u\mid F)$ 라고 할때, $T_n$ 의 asymptotic distribution은 보통 알지만, $G_n$ 의 분포는 보통 알지 못한다.
 
 그러므로 monte carlo simulation을 통해 특정 $F$를 선택하여 $G_n$의 분포를 추정하는 것이다.
 
 몬테카를로 시뮬레이션은 다소 심플하다.
 
 1. 연구자가 관측치에 대한 특정 $F$ 분포와 추정할 모수를 선택한다.
-2. 그리고, n개의 random pairs $(y_i^*,x_i^{*'})$ 를 분포 $F$로부터 random하게 generating한다.
+2. 그리고, n개의 random pairs $(y_i^*,x_i^{*'})$ 를 분포 F로부터 random하게 generating한다.
 3. 추정하고자 하는 통계량 $T_n$ 을 계산한다.
 4. 2~3번을 $B$ 번 만큼 반복해 총 $B$ 개의 통계량 $T_{nb},b=1,\cdots,B$ 를 산출한다.
 5. random sample of size $B$ 의 distribution $G_n(u,F)$ 에 대해 $\hat{P}=\frac{1}{B}\Sigma_{b=1}^{B}1(T_{nb}\geq u)$ 값을 계산한다.
