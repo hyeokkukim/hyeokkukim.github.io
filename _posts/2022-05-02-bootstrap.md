@@ -11,7 +11,7 @@ use_math: true
 
 ---
 
-## <span style="color:#00ADB5;"> 1. Asymptotic Distribution Tehory
+## <span style="color:#FF9F29;"> 1. Asymptotic Distribution Tehory
 
 모집단의 parameter distribution $T_n((y_1,x_1),\cdots{},(y_n,x_n),F)$에 대해 $T_n$의 CDF는 다음과 같다.
 
@@ -25,7 +25,7 @@ $$Gn(u,F)=Pr(T_n\leq u|F)$$
 
 
 
-## <span style="color:#00ADB5;">  2. Definition of the Bootstrap
+## <span style="color:#FF9F29;">  2. Definition of the Bootstrap
 
 부트스트랩은 어떤 모집단의 분포의 통계량 추정이 어려울때 사용한다. 부트스트랩과 asymptotic approximations의 차이는 bootstrap은 알 수 없는 $F$대신 임의의 $F_n$을 통해 추정하는 것이고, asymptotic approximation은 $F_n$을 $F$에 근사하는 것이다. 이렇게 우리는 $F_n$을 통해 추정된 부트스트랩의 분포를 $G^*_n=G_n(u,F_n)$ 이라고 할 수 있다.
 
@@ -56,7 +56,7 @@ $$
 
 
 
-## <span style="color:#00ADB5;">  3. (non) Parametric Bootstrap procedure
+## <span style="color:#FF9F29;">  3. (non) Parametric Bootstrap procedure
 
 1. $F_n$으로부터 $1/n$의 확률로 random vector ( $y_i^*,x_i^*$ ) n개를 추출한다.
 2. 추출된 bootstrap sample로부터 부트스트랩 통계량 $T_n^*$을 계산한다.
@@ -67,7 +67,7 @@ $$
 
 
 
-## <span style="color:#00ADB5;">  4. Bootstrap Estimation of Bias
+## <span style="color:#FF9F29;">  4. Bootstrap Estimation of Bias
 
 asymptotic estimator와는 다르게 bootstrapdms non-consistency를 전제하기 때문에 bias가 존재한다. $\hat{\theta}$의 bias를 $\tau_n=E(\hat{\theta}-\theta_0)$라고 하면, $T_n(\theta)=\hat{\theta}-\theta$의 bias는 $\tau_n=E(T_n(\theta_0))$ 가 된다.
 
@@ -83,7 +83,7 @@ $$T_n^*=\hat{\theta}^*-\theta_n=\hat{\theta}^*-\hat{\theta}$$에 대하여 boots
 
 
 
-## <span style="color:#00ADB5;">  5. Bootstrap Estimation of Variance
+## <span style="color:#FF9F29;">  5. Bootstrap Estimation of Variance
 
 $T_n=\hat{\theta}$ 일때 $Var(\hat{\theta})=V_n=E(T_n-E(T_n))^2$ 이고,
 $$T_n^*=\hat{\theta}^* $$ 일때 $$Var(\hat{\theta}^*)=V_n^*=E(T_n^*-E(T_n^*))^2$$ 이 된다.
@@ -93,7 +93,7 @@ bootstrap의 standard error는 $$s^*(\hat{\theta})=\sqrt{\hat{V}_n^*}$$ 가 된�
 
 
 
-## <span style="color:#00ADB5;">  6-1. Percentile Interval
+## <span style="color:#FF9F29;">  6-1. Percentile Interval
 
 bootstrap에서의 confidence interval은 bootstrap을 통해 나온 통계량의 quantile function으로 구한다.
 $$q^*_n(\alpha)=q_n(\alpha,F_n)$$ 일때, $$q^*_n(\alpha)$$ 은 bootstrap의 quantile 값이 된다.
@@ -103,7 +103,7 @@ $T_n=\hat{\theta}$ 가 추정하고자 하는 통계량이고, $(1-\alpha)100%$%
 이때 $$q^*_n(\alpha)$$ 는 부트스트랩 결과 나온 통계량 $$\hat{\theta_{n1}^*}, \cdots{} ,\hat{\theta}_{nB}^*$$ 이므로 bootstrap percentile interval estimation은
 > $$C^{PC}=[\hat{q_n}^*(\alpha/2),\hat{q_n}^*(1-\alpha/2)]$$
 
-## <span style="color:#00ADB5;">  6-2. Percentile-t Interval
+## <span style="color:#FF9F29;">  6-2. Percentile-t Interval
 
 classic sampling t 통계량이 $T=\frac{\hat{\theta}-\theta}{s(\hat{\theta})}$ 일때, bootstrap의 t 통계량은 $$T^*=\frac{\hat{\theta}^*-\hat{\theta}}{s^*(\hat{\theta})}$$가 된다.
 이때, 부트스트랩 통계량 $T^*$ 는 percentile interval 안에 들어와야 하므로 $$q^*_{\alpha/2}\leq T^*\leq q^*_{1-\alpha/2}$$ 로써 $$q^*_{\alpha/2}\leq \frac{\hat{\theta}^*-\hat{\theta}}{s^*(\hat{\theta})}\leq q^*_{1-\alpha/2}$$ 가 된다.
@@ -124,7 +124,7 @@ $$
 
 
 
-## <span style="color:#00ADB5;">  7. Bootstrap Hypothesis Tests
+## <span style="color:#FF9F29;">  7. Bootstrap Hypothesis Tests
 
 Bootstrap 추정치의 p-value는 $$ p^* =\frac{1}{B}\Sigma_{b=1}^B1[\mid T^*(b)\mid > \mid T \mid ]$$ 가 된다.
 
@@ -136,7 +136,7 @@ $$p^*=\frac{1}{B}\Sigma_{b=1}^B1[\mid \hat{\theta}^*(b)-\hat{\theta}\mid > \mid 
 
 
 
-## <span style="color:#00ADB5;">  8. Wald Statistic
+## <span style="color:#FF9F29;">  8. Wald Statistic
 
 만약 추정하고자 하는 모수 $\theta$가 하나가 아니라 vector라면 wald test를 해야한다.
 
@@ -148,7 +148,7 @@ $H_0:\theta=\theta_0,H_1:\theta\ne\theta_0$에 대해 bootstrap wald 통계량�
 
 
 
-## <span style="color:#00ADB5;">  9. Criterion Based Booststrap Tests
+## <span style="color:#FF9F29;">  9. Criterion Based Booststrap Tests
 
 criterion-based estimator는 $\hat{\beta}=arg min_\beta J(\beta)$와 같은 제약식을 갖게 된다.
 
@@ -164,7 +164,7 @@ p-vlaue는 $$p^*=\frac{1}{B}\Sigma_{b=1}^B1[J^*(b)>J]$$ 가 된다.
 
 
 
-## <span style="color:#00ADB5;">  10. Bootstrap for Regression Models
+## <span style="color:#FF9F29;">  10. Bootstrap for Regression Models
 
 선형회귀식 $y_i = x_i'\beta + e_i$ 에 대해 non-parametric bootstrap 샘플로 만들어진 선형회귀식 $$y_i^* = x_i^{*'}\hat{\beta}+e^*_i$$ 는 보통 $$E(e_i^*\mid x_i^*) \ne 0$$ 을 만족하지 못한다.
 

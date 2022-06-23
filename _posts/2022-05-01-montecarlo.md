@@ -11,7 +11,7 @@ use_math: true
 
 ---
 
-## <span style="color:#00ADB5;"> 1. Criterion-Based Tests
+## <span style="color:#FF9F29;"> 1. Criterion-Based Tests
 
 Wald test는 비선형방정식에는 적절하지 않다. 그래서 이 경우 Criterion-Based Test $J(\beta)$를 사용한다.
 
@@ -31,7 +31,7 @@ $$J = min_{\beta \in B_0}J(\beta)-min_{\beta \in B}J(\beta)
 
 
 
-## <span style="color:#00ADB5;"> 2. Minimum Distance Estimator
+## <span style="color:#FF9F29;"> 2. Minimum Distance Estimator
 
 Minimum distance estimator는 불편성을 만족하지 않는 파라미터를 최대한 불편성을 만족하도록 하는 것이다.
 
@@ -82,7 +82,7 @@ $$avar(\hat{\beta}-\tilde{\beta}_{emd})=avar(\hat{\beta})-avar(\tilde{\beta}_{em
 
 
 
-## <span style="color:#00ADB5;"> 3. Minimum Distance Tests
+## <span style="color:#FF9F29;"> 3. Minimum Distance Tests
 
 $H_0:R'\beta=\theta_0$일때 efficient minimum distance estimator $\tilde{\beta}_{emd}$가 제약조건 $R'\beta=\theta_0$일때 다음 추정값을 만족한다.
 
@@ -109,7 +109,7 @@ $$J^*\rightarrow_d x^2_q$$
 
 
 
-## <span style="color:#00ADB5;"> 4. Minimum Dsitance Tests Under Homoskedasticity
+## <span style="color:#FF9F29;"> 4. Minimum Dsitance Tests Under Homoskedasticity
 
 만약 $\hat{W}=(\hat{V}_\beta^0)^{-1}=\hat{Q}/s^2=(\frac{1}{n}X'X)/s^2$ 일때 $J^0(\beta)=n(\hat{\beta}-\beta)'\hat{\Omega}(\hat{\beta}-\beta)/s^2$가 된다.
 
@@ -131,7 +131,7 @@ $$J^0=J^0(\tilde{\beta}_{cls})=n(\hat{\beta}-\tilde{\beta}_{cls})'\hat{Q}(\hat{\
 
 
 
-## <span style="color:#00ADB5;"> 5. F Tests
+## <span style="color:#FF9F29;"> 5. F Tests
 
 귀무가설 $$H_0: \beta \in B_0$$ 에서 F 통계량은 $$F=\frac{(\tilde{\sigma}^2-\hat{\sigma}^2)/1}{\hat{\sigma}^2/(n-k)}$$ 이고, 
 이때의 분산 추정량은 아래와 같다. 
@@ -145,7 +145,7 @@ $$F=\frac{SSE(\tilde{\beta}_{cls})-SSE(\hat{\beta})}{qs^2}=\frac{J^0}{q}(\text{w
 
 
 
-## <span style="color:#00ADB5;"> 6. Hausman Tests
+## <span style="color:#FF9F29;"> 6. Hausman Tests
 
 Hausma test 는 두개의 추정량을 비교할때 사용한다.
 
@@ -201,7 +201,7 @@ Hausman statistic은 Wald statistic과 동일하게 된다.
 
 
 
-## <span style="color:#00ADB5;"> 7. Monte Carlo Simulation
+## <span style="color:#FF9F29;"> 7. Monte Carlo Simulation
 
 모집단 F의 관측치 $(y_i;x_i')$, 모수 $\theta$에 대해 estimator $\hat{\theta}$, t-statistic $(\hat{\theta}-\theta)/se(\hat{\theta})$ 와 같은 통계량의 집합을  $T_n=T_n{(y_i,x_1'),\cdots{},(y_n,x'_n),\theta}$ 이라고 하자.
 

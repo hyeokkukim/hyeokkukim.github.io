@@ -12,7 +12,7 @@ use_math: true
 ---
 
 
-## <span style="color:#00ADB5;">  1. Endogeneity
+## <span style="color:#FF9F29;">  1. Endogeneity
 
 Endogeneity(내생성)은 독립변수가 오차항과 상관관계를 가지는 것이다.
 
@@ -20,7 +20,7 @@ Endogeneity(내생성)은 독립변수가 오차항과 상관관계를 가지는
 
 
 
-## <span style="color:#00ADB5;">  2. Simultaneous Equations Models
+## <span style="color:#FF9F29;">  2. Simultaneous Equations Models
 
 내생성 문제에서 가장 많이 사용되는 Simultaneous Equations Models(SEM)은 수요와 공급 관련 문제이다. $h_s$ 는 노동자들의 연단위 노동시간이고, $w$ 는 시간당 평균 월급이다. 그리고 이 두 변수는 아래와 같이 간단하게 나타날 수 있다.
 
@@ -60,7 +60,7 @@ $$\sqrt{n}(\hat{\alpha_1}-\alpha_1)\rightarrow_p\frac{Cov(w_i,u_i)}{Var(w_i)}$$
 
 
 
-## <span style="color:#00ADB5;">  3. Motivation
+## <span style="color:#FF9F29;">  3. Motivation
 
 그렇다면 내생성을 어떻게 제거할 수 있을까?
 
@@ -81,7 +81,7 @@ instrumental variables $z_1$는 오차항과 상관관계를 갖지 않는다. �
 
 
 
-## <span style="color:#00ADB5;">  4. Instrumental Variables
+## <span style="color:#FF9F29;">  4. Instrumental Variables
 
 해당 내용들을 정리하면
 
@@ -93,7 +93,7 @@ $$x_i = {x_{1i} \choose x_{2i}},$$ where $$x_{1i}$$ is $$ k_1 \times 1, x_{2i}$$
 
 
 
-## <span style="color:#00ADB5;">  5. 2SLS
+## <span style="color:#FF9F29;">  5. 2SLS
 
 앞선 내용들을 통해 최종적으로 회귀계수를 추정할때는 두가지 케이스로 다르게 추정가능하다.
 
