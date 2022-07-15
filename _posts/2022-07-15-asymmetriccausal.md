@@ -1,11 +1,11 @@
 ---
-title:  "[Causality] Sklearn을 활용한 타이타닉 생종률 예측"
+title:  "[Causal Inference] Asymmetric Causality Tests Applicaton"
 excerpt: 
 toc: true
 toc_sticky: true
 
 categories:
-  - Causality
+  - Causal Inference
 
 use_math: true
 
