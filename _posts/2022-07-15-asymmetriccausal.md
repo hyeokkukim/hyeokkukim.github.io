@@ -39,15 +39,15 @@ $$y_{2t}=y_{2t-1}+\epsilon _{2t}=y_{2,0}+\Sigma _{i=1}^t\epsilon _{2i}^++\Sigma 
 
 $$y_t^+=v+A_1y_{t-1}^++\cdots +A_py_{t-p}^++u_t^+$$
 
-$$y_t^+:\ 2\times 1$$ vector of the variances
-$$v:\ 2\times 1$$ vector of intrcepts
-$$u_t^+:\ 2\times 1$$ vector of error terms
-$$ A_r:\ 2\times 2$$ estimated variance-covariance matrix of error term
+$$y_t^+:\ 2\times 1$$ vector of the variances \\
+$$v:\ 2\times 1$$ vector of intrcepts \\
+$$u_t^+:\ 2\times 1$$ vector of error terms \\
+$$ A_r:\ 2\times 2$$ estimated variance-covariance matrix of error term \\
 그렇다면, lag는 어떻게 선택해야 할까? lag의 경우 0부터 최대 lag p까지를 input 시켜 아래의 제약식이 최소로 되는 lag를 선택한다.
 
 
 $$HJC=\ln (|\hat{\Omega }_j|)+j\left(\frac{n^2\ln T+2n^2\ln (\ln T)}{2T}\right),\ \ \ \ j=0,\cdots ,p$$
-$$|\hat{\Omega }_j|:\ covariance-variance\ \ matrix\ of\ error\ temrs$$
+$$ \mid \hat{\Omega }_j \mid $$ : covariance-variance matrix of error temrs
 
 ## 3. Hypothesis Test
 

@@ -1,192 +1,117 @@
 ---
-title:  "[ML for Python] Sklearn을 활용한 타이타닉 생종률 예측"
-excerpt: "GMM"
+title:  "[FRM] 파이썬으로 VaR 구현하기 1"
+excerpt: 
 toc: true
 toc_sticky: true
 
 categories:
-  - Machine Learning
+  - Financial Risk Management
 
 use_math: true
 
 ---
 
-## 1. 패키지 import 및 데이터 load
+VaR은 포트폴리오 리스크 매니징에서 가장 기본적으로 사용되는 metric으로 최극단의 위험에서의 해당 포트폴리오가 잃을 수 있는 손실로 포트폴리오의 최대가능손실이라고 생각하면 된다. VaR은 크게 세가지 방법으로 구분되어지는데 1) 가장 쉬운 방법으로 포트폴리오 수익률은 나열하여 가장 큰 손실을 해당 포트폴리오의 VaR로 선정하는 것이고 2) 두번째 방법은 공분산행렬을 사용하는 것으로 과거의 수익률이 미래에도 유사할 것이라는 것과 포트폴리오의 손실이 정규분포를 따를 것이라는 전제하에 계산하는 방법으로 parametric-VaR이라고 하자 3) 마지막으로 몬테카를로 시뮬레이션을 사용하는 방법으로 과거 수익률을 random하게 sampling하여 수익률에 대한 분포를 만드는 것으로 nonparmametric-VaR이라고 한다.
+
+​
+
+첫번째 방법은 너무나도 원시적인 방법이기 때문에 스킵하고 두번째, 세번째 방법을 파이썬으로 구현해보자.
+
+우선, parametric VaR방법이다.
+
+​
+
+Parametric-VaR을 구하는 방법은 다음과 같은 단계를 거친다.
+
+포트폴리오의 각 자산별 수익률을 계산한다.
+
+각 자산별 공분산행렬을 계산한다.
+
+포트폴리오의 평균과 표준편차를 계산한다.
+
+포트폴리오 수익률이 정규분포를 따른다는 가정하에 특정 confidence interva에서의 해당포트폴리오 역누적분포함수(분위수함수)를 계산한다.
+
+포트폴리오 최초 투자금액(액면가)에서 4에서 계산한 quantile 값을 차분해 해당 포트폴리오의 최대가능 손실액을 계산한다.
+
+​
+
+다음으로 파이썬을 활용해 계산하는 방법을 알아보겠다.
+
+​
+
+우선, 관련 패키지를 import 하겠다. 포트폴리오 자산은 애플, 페이스북, 씨티그룹, 디즈니이고 데이터는 yahoo finance 패키지를 사용한다. 
 
 ```python
+import pandas as pd
+from pandas_datareader import data as pdr
+import yfinance as yf
 import numpy as np
-import pandas as np
-df = pd.read_csv('./titanic_train.csv')
-df.head()
+import datetime as dt
+
+tickers = ['AAPL','FB','C','DIS']
+weights = np.array([0.25,0.3,0.15,0.3]) #포트폴리오 가중치
+
+initial_investment = 1000000
+
+data = pdr.get_data_yahoo(tickers, start = '2018-01-01', end = dt.date.today())['Close']
+
+returns = data.pct_change()
+
+returns.tail()
 ```
-![png](/assets/images/스크린샷_2022-07-07_오후_3.38.16.png){: .align-center}
+![png](/assets/images/var1.png){: .align-center}
 
- 해당 파일은 총 12개의 column으로 되어 있다.
+다음으로 공분산행렬(variance covariance matrix)를 만든다. 공분산행렬을 직접 만들수도 있지만, cov()라는 함수를 사용했다. 공분산행렬을 간단히 설명하면, 변수들간의 공분산(covariance)를 matrix notation으로 표현한 것으로, 아래와 같이 대각원소는 해당 변수들의 분산이고 대각원소를 제외한 나머지는 변수들간의 공분산을 symmetric하게 나타낸 matrix이다.
 
-Passengerid: 탑승자 데이터 일련번호
-
-Survived: 생존여부(0:사망, 1: 생존)
-
-Pclass: 선실 등급(1: 일등석, 2: 이등석, 3: 삼등석)
-
-Name: 탑승자 이름
-
-Sex: 성별(0: 남성, 1: 여성)
-
-Age: 탑승자 나이
-
-SibSp: 동행자(형제자매, 배우자) 인원수
-
-Parch: 동행자(부모, 자식) 인원수
-
-Ticket: 티켓번호
-
-Fare: 요금
-
-Cabin: 선실 번호
-
-Embarked: 중간 정착 항구(C: Cherbourg, Q: Queenstown, S: Southampton)
-
-## 2. 전처리
-
-우선, 결측치를 확인해보면 Age, Cabin, Embarked에 각각 결측치가 있는것이 확인된다.
+$$
+\begin{aligned}
+C(x,y,z)=\begin{pmatrix}\text{var}_x&covar_{x,y}&covar_{x,z}\\covar_{y,x}&var_y&covar_{y,z}\\covar_{z,x}&covar_{z,y}&var_z\end{pmatrix}
+\end{aligned}
+$$
 
 ```python
-df.isnull().sum()
+#공분산행렬 만들기
+cov_matrix = returns.cov()
+cov_matrix
 ```
+![png](/assets/images/var2.png){: .align-center}
 
-![png](/assets/images/스크린샷_2022-07-07_오후_3.46.20.png){: .align-center}
+그리고 포트폴리오의 평균 수익률과 표준편차를 구하는데, 포트폴리오 평균 수익률은 각 자산의 평균 수익률과 가중치 곱으로 나타내는데 파이썬에서 프로그래밍하기 위해서는 각 자산의 평균 수익률과 가중치가 각각 벡터화 되어 있으므로 dot()함수로 내적해주면 포트폴리오 평균을 구할 수 있다.
 
-해당 결측치를 처리하기 위해 age는 평균값, cabin은 N, embarked는 N을 넣어준다.
 
-그리고 Cabin의 경우 선실명을 세부구분 지을 필요가 없기 때문에 앞자리만 추출해준다.
+$$AVG_{portfolio}=W_{APPL}\times AVG_{APPL}+W_{CL}\times AVG_C+W_{DIS}\times AVG_{DIS}+W_{FB}\times AVG_{FB}$$
+
+또한 포트폴리오 표준편차는 앞서 구한 공분산행렬로 계산된다.
+
+$$\sigma _{portfolio}^2=\sqrt{W"\cdot V_{portfolio}\cdot W}$$
+
+$$\left(AVG_x:x\text{의 평균 },W_x:x\text{의 가중치 },V_x:x\text{의 공분산행렬 },\sigma _x^2:x\text{의 분산 },\sigma _x:x\text{의 표준편차}\right)$$
+
+마지막으로 초기 투자금액을 포트폴리오 평균과 포트폴리오 표준편차에 곱해준다.
 
 ```python
-df['Age'].fillna(df['Age'].mean(), inplace=True)
-df['Cabin'].fillna('N', inplace=True)
-df['Embarked'].fillna('N', inplace=True)
-
-df['Cabin'] = df['Cabin'].str[:1]
+#포트폴리오 평균 수익률 및 표준편차 계산
+avg_rets = returns.mean()
+port_mean = avg_rets.dot(weights) #포트폴리오 가중치 벡터와 내적해 수익률 normalization
+port_stdev = np.sqrt(weights.T.dot(cov_matrix).dot(weights)) #포트폴리오 표준편차 계산
+mean_investment = initial_investment*(1+port_mean) #포트폴리오 평균수익 계산
+stdev_imvestment = initial_investment*port_stdev #포트폴리오 수익 표준편차 계산
 ```
 
-연령대별 분류를 위해 아래와 같이 신규 컬럼 ‘age_cat’을 생성한다.
+위에서 구한 값들을 토대로 95%신뢰수준하에 분위수값을 계산하기 위해 수익률의 역누적분포함수를 scipy패키지로 구하게 되면 95%신뢰수준에서의 quantile 값 cutoff1 967906.7207564594원이 된다.
 
 ```python
-def get_category(age):
-    cat = ''
-    if age <= 1: cat = 'unknow'
-    elif age <= 5: cat = 'baby'
-    elif age <= 12: cat = 'child'
-    elif age <= 18: cat = 'teenager'
-    elif age <= 25: cat = 'student'
-    elif age <= 35: cat = 'young adult'
-    elif age <= 60: cat = 'adult'
-    else : cat = 'elderly'
-
-    return cat
-
-df['age_cat'] = df['Age'].apply(lambda x: get_category(x))
-df.head()
-```
-![png](/assets/images/스크린샷 2022-07-07 오후 3.56.18.png){: .align-center}
-
-Null 값 처리와 불필요한 피쳐를 제거하고, 문자열 카테고리형 변수들을 변환하기 위해 LabelEncoder 클래스를 이용한다.
-
-```python
-#Null 처리
-df['Age'].fillna(df['Age'].mean(), inplace=True)
-df['Cabin'].fillna('N', inplace=True)
-df['Embarked'].fillna('N', inplace=True)
-df['Fare'].fillna(0, inplace=True)
-
-#불필요한 피처 제거
-df.drop(['PassengerId','Name','Ticket'],axis=1,inplace=True)
-
-#레이블링
-from sklearn.preprocessing import LabelEncoder
-features = ['Cabin','Sex','Embarked']
-for feature in features:
-    le = LabelEncoder()
-    le = le.fit(df[feature])
-    df[feature] = le.transform(df[feature])
-
-df.head()
-```
-![png](/assets/images/스크린샷 2022-07-11 오전 11.25.57.png){: .align-center}
-
-## 3. 모델링
-
-종속변수 survived와 독립변수 Pclass, Sex, Age, SibSp, Parch, Fare, Cabin, Embarked, age_cat을 변수로 설정하고 train set와 test set를 나눈다.
-
-```python
-y = df['Survived']
-x = df.drop('Survived',axis=1)
-
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2, random_state=11)
+#역누적분포함수(ppf) 계산
+from scipy.stats import norm
+conf_level1 = 0.05
+cutoff1 = norm.ppf(conf_level1, mean_investment, stdev_imvestment)
+cutoff1
 ```
 
-### 3.1 의사결정나무
+![png](/assets/images/var3.png){: .align-center}
 
-의사결정나무를 sklearn의 DecisionTreeClassifier로 시행하고 학습의 accuracy 측정 결과 0.7877이 나왔다.
+최종적으로 최초의 투자액 1,000,000원에서 극단값 cutoff1을 차분하면 95%신뢰수준에서 해당 포트폴리오의 최대가능손실액 약 22,347원을 계산할 수 있다.
 
-```python
-from sklearn.metrics import accuracy_score
-from sklearn.tree import DecisionTreeClassifier
-dt_clf = DecisionTreeClassifier(random_state=11)
-dt_clf.fit(x_train,y_train)
-dt_pred = dt_clf.predict(x_test)
-print('DecisionTreeClassifier 정확도: {0:.4f}'.format(accuracy_score(y_test,dt_pred)))
-```
+​
 
-### 3.2 랜덤포레스트
-
-랜덤포레스트를 sklearn의 RandomForesetCalssifier로 시행하고 학습의 accuracy 측정결과 0.8547이 나왔다.
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-rf_clf = RandomForestClassifier(random_state=11)
-rf_clf.fit(x_train, y_train)
-rf_pred = rf_clf.predict(x_test)
-print('RandomForestClassifier 정확도: {0:.4f}'.format(accuracy_score(y_test,rf_pred)))
-```
-
-### 3.3 로지스틱회귀
-
-로지스틱 회귀분석을 sklearn의 LogisticRegression으로 시행하고 학습의 accuracy 측정결과 0.8547이 나왔다.
-
-```python
-from sklearn.linear_model import LogisticRegression
-lr_clf = LogisticRegression(random_state=11)
-lr_clf.fit(x_train, y_train)
-lr_pred = lr_clf.predict(x_test)
-print('RandomForestClassifier 정확도: {0:.4f}'.format(accuracy_score(y_test,rf_pred)))
-```
-
-## 4. 최적 하이퍼 파라미터
-
-GridSearchCV를 이용해 의사결정나무의 최적의 하이퍼 파라미터를 찾고 예측 성능을 측정한다.
-
-CV는 5개의 폴드 세트를 지정하고 하이퍼 파라미터는 max_dept, min_samples_split, min_samples_leaf를 변경하며 성능을 측정한다.
-
-```python
-from sklearn.model_selection import GridSearchCV
-
-parameters = {'max_depth':[2,3,5,10],'min_samples_split':[2,3,5], 'min_samples_leaf':[1,5,8]}
-
-grid_dclf = GridSearchCV(dt_clf, param_grid=parameters, scoring='accuracy', cv=5)
-grid_dclf.fit(x_train, y_train)
-
-print('GridSearchCV 최적 하이퍼 파라미터:', grid_dclf.best_params_)
-print('GridSearchCV 최고 정확도: {0:.4f}'.format(grid_dclf.best_score_))
-best_dclf = grid_dclf.best_estimator_
-```
-![png](/assets/images/스크린샷 2022-07-11 오후 12.40.30.png){: .align-center}
-
-그리고 각 최고의 정확도를 가진 하이퍼 파라미터를 적용했을시의 accuracy는 0.8715로 최초의 0.7877보다 성능이 향상된 것을 확인할 수 있었다.
-
-```python
-dpredictions = best_dclf.predict(x_test)
-accuracy = accuracy_score(y_test, dpredictions)
-print('테스트 세트에서의 DecisionTreeClassifier 정확도: {0:.4f}'.format(accuracy))
-```
+참고: https://www.interviewqs.com/blog/value-at-risk
